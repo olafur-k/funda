@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Funda.Dto.Base
 {
+    [Serializable]
+    [JsonObject]
     public class PagedResult<T>
     {
         public List<T> Objects{ get; set; }
@@ -10,6 +14,8 @@ namespace Funda.Dto.Base
         public int TotaalAantalObjecten { get; set; }
     }
 
+    [Serializable]
+    [JsonObject]
     public class Metadata
     {
         public string ObjectType { get; set; }
@@ -17,6 +23,8 @@ namespace Funda.Dto.Base
         public string Titel { get; set; }
     }
 
+    [Serializable]
+    [JsonObject]
     public class Paging
     {
         public int AantalPaginas { get; set; }
