@@ -9,14 +9,14 @@ using Funda.Dto.Base;
 
 namespace Funda.ApiClient
 {
-    public class HuisApiClient : FundaApiClient<Huis>
+    public class HouseApiClient : FundaApiClient<House>
     {
-        public async Task<PagedResult<Huis>> GetAllAmsterdamObjectsAsync()
+        public async Task<PagedResult<House>> GetAllAmsterdamHousesAsync()
         {
             return await base.GetAllResultsAsync("/amsterdam/");
         }
 
-        public async Task<PagedResult<Huis>> GetAllAmsterdamGardenObjectsAsync()
+        public async Task<PagedResult<House>> GetAllAmsterdamGardenHousesAsync()
         {
             return await base.GetAllResultsAsync("/amsterdam/tuin/");
         }

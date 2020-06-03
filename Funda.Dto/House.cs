@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Funda.Dto
 {
-    public class Huis
+    public class House
     {
         // The API result returns a lot of info.
         // We really we just need the makelaar name & id, but I've added a couple more extra properties

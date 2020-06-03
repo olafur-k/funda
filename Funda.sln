@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funda.ApiClient", "Funda.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funda.Dto", "Funda.Dto\Funda.Dto.csproj", "{6EE4406C-8619-4F63-B215-34DD7085A5FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funda.Services", "Funda.Services\Funda.Services.csproj", "{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6EE4406C-8619-4F63-B215-34DD7085A5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE4406C-8619-4F63-B215-34DD7085A5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EE4406C-8619-4F63-B215-34DD7085A5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

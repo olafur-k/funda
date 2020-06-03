@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EE4406C-8619-4F63-B215-34DD7085A5FB}</ProjectGuid>
+    <ProjectGuid>{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Funda.Dto</RootNamespace>
-    <AssemblyName>Funda.Dto</AssemblyName>
+    <RootNamespace>Funda.Services</RootNamespace>
+    <AssemblyName>Funda.Services</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\PagedResult.cs" />
-    <Compile Include="House.cs" />
+    <Compile Include="HouseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Funda.ApiClient\Funda.ApiClient.csproj">
+      <Project>{AC30F11F-0B9A-499A-840B-C62BF947B2D1}</Project>
+      <Name>Funda.ApiClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
