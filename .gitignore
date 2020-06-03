@@ -31,3 +31,4 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 /Funda/Web.Debug.config
+*Web.Debug.config
