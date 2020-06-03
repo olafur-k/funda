@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\FundaApiClient.cs" />
+    <Compile Include="HuisApiClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Funda.Dto\Funda.Dto.csproj">
+      <Project>{6EE4406C-8619-4F63-B215-34DD7085A5FB}</Project>
+      <Name>Funda.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
