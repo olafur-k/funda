@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Funda.Dto
 {
+    [DebuggerDisplay("{Adres,nq}")]
     public class House
     {
         // The API result returns a lot of info.

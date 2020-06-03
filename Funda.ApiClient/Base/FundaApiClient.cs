@@ -29,9 +29,19 @@ namespace Funda.ApiClient.Base
             var urlWithPage = urlWithoutPage.Replace("{PAGE}", page.ToString());
 
             var firstPageResponse = await _httpClient.GetAsync(urlWithPage);
-            var firstPageResults = await firstPageResponse.Content.ReadAsAsync<PagedResult<T>>();
+            var allResults = await firstPageResponse.Content.ReadAsAsync<PagedResult<T>>();
 
-            return firstPageResults;
+            while (page < allResults.Paging.AantalPaginas)
+            {
+                page++;
+                urlWithPage = urlWithoutPage.Replace("{PAGE}", page.ToString());
+                var nextPageResponse = await _httpClient.GetAsync(urlWithPage);
+                var nextPageResults = await nextPageResponse.Content.ReadAsAsync<PagedResult<T>>();
+
+                allResults.Objects.AddRange(nextPageResults.Objects);
+            }
+
+            return allResults;
         }
     }
 }

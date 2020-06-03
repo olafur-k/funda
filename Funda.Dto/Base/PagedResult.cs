@@ -14,7 +14,7 @@ namespace Funda.Dto.Base
     {
         public string ObjectType { get; set; }
         public string Omschrijving { get; set; }
-        public string Title { get; set; }
+        public string Titel { get; set; }
     }
 
     public class Paging
