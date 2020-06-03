@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Runtime.Caching;
-using System.Text;
 using System.Threading.Tasks;
 using Funda.Dto.Base;
 
@@ -17,7 +14,7 @@ namespace Funda.ApiClient.Base
 
         private async Task<PagedResult<T>> GetPageResultsAsync(string searchTerm, int page)
         {
-            var cacheKey = $"funda_{searchTerm.Replace("/", "_")}_p{page}";
+            var cacheKey = $"funda_{searchTerm.Replace("/", "_")}_p{page}"; // remove slashes, the key has to be a valid file name
 
             if (_cache.Get(cacheKey) != null)
             {

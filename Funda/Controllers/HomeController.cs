@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Funda.Services;
 
@@ -19,7 +15,8 @@ namespace Funda.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var mostCommonSellers = await _houseService.GetMostCommonAmsterdamSellersAsync();
+            var mostCommonAmsterdamAgents = await _houseService.GetMostCommonAmsterdamAgentsAsync();
+            var mostCommonAmsterdamGardenAgents = await _houseService.GetMostCommonGardenAgentsAsync();
 
             return View();
         }
