@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Funda.ApiClient.Base;
 using Funda.Dto;
 using Funda.Dto.Base;
 
 namespace Funda.ApiClient
 {
-    public class HouseApiClient : FundaApiClient<House>
+    public class HouseApiClient : FundaApiClient<House>, IHouseApiClient
     {
         public async Task<PagedResult<House>> GetAllAmsterdamHousesAsync()
         {
@@ -20,5 +16,11 @@ namespace Funda.ApiClient
         {
             return await base.GetAllResultsAsync("/amsterdam/tuin/");
         }
+    }
+
+    public interface IHouseApiClient
+    {
+        Task<PagedResult<House>> GetAllAmsterdamHousesAsync();
+        Task<PagedResult<House>> GetAllAmsterdamGardenHousesAsync();
     }
 }

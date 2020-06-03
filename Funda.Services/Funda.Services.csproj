@@ -49,6 +49,10 @@
       <Project>{AC30F11F-0B9A-499A-840B-C62BF947B2D1}</Project>
       <Name>Funda.ApiClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Funda.Dto\Funda.Dto.csproj">
+      <Project>{6EE4406C-8619-4F63-B215-34DD7085A5FB}</Project>
+      <Name>Funda.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

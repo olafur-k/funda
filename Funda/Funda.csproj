@@ -200,6 +200,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Funda.ApiClient\Funda.ApiClient.csproj">
+      <Project>{ac30f11f-0b9a-499a-840b-c62bf947b2d1}</Project>
+      <Name>Funda.ApiClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Funda.Services\Funda.Services.csproj">
       <Project>{ABCB5B9E-FF13-4D48-BB57-8ABA15B5D1CA}</Project>
       <Name>Funda.Services</Name>

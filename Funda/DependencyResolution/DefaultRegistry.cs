@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Funda.DependencyResolution {
+    using Funda.ApiClient;
     using Funda.Services;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -31,6 +32,7 @@ namespace Funda.DependencyResolution {
 					scan.With(new ControllerConvention());
 
                     scan.AssemblyContainingType<HouseService>();
+                    scan.AssemblyContainingType<HouseApiClient>();
                 });
             //For<IExample>().Use<Example>();
         }
