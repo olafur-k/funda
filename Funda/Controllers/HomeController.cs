@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Funda.Models;
 using Funda.Services;
@@ -14,7 +17,7 @@ namespace Funda.Controllers
             _houseService = houseService;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var model = new HomeViewModel();
 
@@ -24,9 +27,17 @@ namespace Funda.Controllers
         public async Task<ActionResult> AgentList(bool withGarden)
         {
             var model = new AgentListViewModel();
-            model.AgentList = withGarden ?
-                await _houseService.GetMostCommonAmsterdamAgentsAsync() :
-                await _houseService.GetMostCommonGardenAgentsAsync();
+
+            try
+            {
+                model.AgentList = withGarden ?
+                    await _houseService.GetMostCommonAmsterdamAgentsAsync() :
+                    await _houseService.GetMostCommonGardenAgentsAsync();
+            }
+            catch (HttpException ex)
+            {
+                return new HttpStatusCodeResult(ex.GetHttpCode());
+            }
 
             return View(model);
         }
