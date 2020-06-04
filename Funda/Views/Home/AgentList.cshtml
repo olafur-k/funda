@@ -1,0 +1,24 @@
+﻿@model Funda.Models.AgentListViewModel
+
+<h2>@Model.AgentList.Title</h2>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Agent</th>
+            <th scope="col">Object count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1; }
+        @foreach (var agent in Model.AgentList.Items)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@agent.Name</td>
+                <td>@agent.ObjectCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
