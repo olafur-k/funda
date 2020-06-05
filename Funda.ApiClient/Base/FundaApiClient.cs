@@ -13,17 +13,17 @@ namespace Funda.ApiClient.Base
     {
         private readonly HttpClient _httpClient = new HttpClient();
         private readonly FileCache _cache = new FileCache();
-        private readonly ILog log = LogManager.GetLogger(nameof(FundaApiClient<T>));
+        private readonly ILog _log = LogManager.GetLogger(nameof(FundaApiClient<T>));
 
-        private readonly string baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-        private readonly string pageSize = ConfigurationManager.AppSettings["ApiPageSize"];
-        private readonly string key = ConfigurationManager.AppSettings["ApiKey"];
-        private readonly int throttling = 0;
+        private readonly string _baseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
+        private readonly string _pageSize = ConfigurationManager.AppSettings["ApiPageSize"];
+        private readonly string _key = ConfigurationManager.AppSettings["ApiKey"];
+        private readonly int _throttling = 0;
 
         public FundaApiClient()
         {
             var throttlingString = ConfigurationManager.AppSettings["ApiThrottlingMilliseconds"];
-            int.TryParse(throttlingString, out throttling);
+            int.TryParse(throttlingString, out _throttling);
         }
 
         private async Task<PagedResult<T>> GetPageResultsAsync(string searchTerm, int page)
@@ -32,22 +32,23 @@ namespace Funda.ApiClient.Base
 
             if (_cache.Get(cacheKey) != null)
             {
-                log.Info($"Getting {searchTerm} page {page} from cache");
+                _log.Info($"Getting {searchTerm} page {page} from cache");
                 return (PagedResult<T>)_cache[cacheKey];
             }
 
-            log.Info($"Fetching {searchTerm} page {page} from API");
+            _log.Info($"Fetching {searchTerm} page {page} from API");
+            await Task.Delay(_throttling);
 
-            var url = baseUrl
-                .Replace("{KEY}", key)
-                .Replace("{PAGESIZE}", pageSize)
+            var url = _baseUrl
+                .Replace("{KEY}", _key)
+                .Replace("{PAGESIZE}", _pageSize)
                 .Replace("{SEARCHTERM}", searchTerm)
                 .Replace("{PAGE}", page.ToString());
 
             var response = await _httpClient.GetAsync(url);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                log.Error($"Error calling API: {response.StatusCode}");
+                _log.Error($"Error calling API: {response.StatusCode}");
                 throw new HttpException((int)response.StatusCode, response.StatusCode.ToString());
             }
             var result = await response.Content.ReadAsAsync<PagedResult<T>>();
@@ -65,7 +66,6 @@ namespace Funda.ApiClient.Base
 
             while (page < allResults.Paging.AantalPaginas)
             {
-                await Task.Delay(throttling);
                 page++;
 
                 var nextPageResults = await GetPageResultsAsync(searchTerm, page);

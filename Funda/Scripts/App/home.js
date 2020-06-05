@@ -22,7 +22,9 @@
     return {
         init: () => {
             $(document).ready(() => {
-                _loadAgents();
+                if ($("#js-home").length) {
+                    _loadAgents();
+                }
             });
         },
     };
